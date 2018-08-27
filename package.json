@@ -1,0 +1,22 @@
+{
+  "name": "generator-connectedcomponent",
+  "version": "0.1.0",
+  "description": "generates, component, connected component, icomponent, component.module.scss",
+  "files": [
+    "generators"
+  ],
+  "keywords": [
+    "yeoman-generator"
+  ],
+  "dependencies": {
+    "inquirer": "^6.2.0",
+    "yeoman-generator": "^1.1.1"
+  },
+  "main": "app/index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

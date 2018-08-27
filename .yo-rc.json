@@ -1,0 +1,11 @@
+{
+  "generator-connectedcomponent": {
+    "promptValues": {
+      "component_name": "generator connectedcomponent",
+      "folder_path": ".\\",
+      "state_name": "data",
+      "property_name": "property",
+      "dispatch_name": "dispatch"
+    }
+  }
+}

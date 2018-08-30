@@ -4,5 +4,5 @@ export interface I<%= component %>Props {
 }
 
 export interface I<%= component %>State {
-    <%= state %>?: any 
+    <%= state %>?: any; 
 }

@@ -1,23 +1,23 @@
 import * as React from 'react';
 import { connect } from "react-redux";
-import Component from './Component';
-import { dispatch } from '../../actions/dispatch'; // replace with correct export and path
+import <%= component %> from './<%= component %>';
+import { <%= dispatch %> } from '../../actions/<%= actions %>'; // replace with correct export and path
 
 // replace state and property with correct elements from reducer
-const mapStateToProps = ({ state: { property}}) =>
-    { return { property}}
+const mapStateToProps = ({ <%= state %>: { <%= property %>}}) =>
+    { return { <%= property %>}}
     
 // replace dispatch with import from actions
-const mapDispatchToProps = { dispatch }
+const mapDispatchToProps = { <%= dispatch %> }
 
 // replace property with names from mapStateToProps
-const ComponentContainer = ({
-    property, dispatch
+const <%= component %>Container = ({
+    <%= property %>, <%= dispatch %>
 }) => (
-    <Component 
-        property={property}
-        dispatch={dispatch}
+    <<%= component %> 
+        <%= property %>={<%= property %>}
+        <%= dispatch %>={<%= dispatch %>}
     />
 )
 
-export default connect(mapStateToProps, mapDispatchToProps)(ComponentContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(<%= component %>Container);

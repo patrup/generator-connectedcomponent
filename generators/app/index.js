@@ -1,10 +1,26 @@
 var Generator = require('yeoman-generator');
+var fs = require('fs');
+
 
 function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
 module.exports = class extends Generator {
+    constructor(args, opts) {
+        // Calling the super constructor is important so our generator is correctly set up
+        super(args, opts);
+        this.argument('workingDirectory', { type: String, required: true });
+    }
+    end() {
+        try {
+            fs.unlinkSync(this.options.workingDirectory + '/.yo-rc.json');
+            this.log('successfully deleted .yo-rc.json');
+        }
+        catch (err) {
+            this.log(err);
+        }
+    }
     async promptForDetails() {
         this.answers = await this.prompt([{
             type: 'input',
@@ -47,7 +63,7 @@ module.exports = class extends Generator {
     writing() {
         this.fs.copyTpl(
             this.templatePath('ComponentConnected.tsx'),
-            this.destinationPath('.\\' + capitalizeFirstLetter(this.answers.component_name) + 'Connected.tsx'),
+            this.destinationPath(this.options.workingDirectory + '/' + capitalizeFirstLetter(this.answers.component_name) + 'Connected.tsx'),
             {
                 property: this.answers.property_name,
                 dispatch: this.answers.dispatch_name,
@@ -58,7 +74,7 @@ module.exports = class extends Generator {
         );
         this.fs.copyTpl(
             this.templatePath('Component.tsx'),
-            this.destinationPath('.\\' + capitalizeFirstLetter(this.answers.component_name) + '.tsx'),
+            this.destinationPath(this.options.workingDirectory + '/' + capitalizeFirstLetter(this.answers.component_name) + '.tsx'),
             {
                 property: this.answers.property_name,
                 dispatch: this.answers.dispatch_name,
@@ -68,7 +84,7 @@ module.exports = class extends Generator {
         );
         this.fs.copyTpl(
             this.templatePath('IComponent.ts'),
-            this.destinationPath('.\\' + 'I' + capitalizeFirstLetter(this.answers.component_name) + '.ts'),
+            this.destinationPath(this.options.workingDirectory + '/' + 'I' + capitalizeFirstLetter(this.answers.component_name) + '.ts'),
             {
                 property: this.answers.property_name,
                 dispatch: this.answers.dispatch_name,
@@ -78,7 +94,7 @@ module.exports = class extends Generator {
         );
         this.fs.copyTpl(
             this.templatePath('Component.module.scss'),
-            this.destinationPath('.\\' + capitalizeFirstLetter(this.answers.component_name) + '.module.scss')
+            this.destinationPath(this.options.workingDirectory + '/' + capitalizeFirstLetter(this.answers.component_name) + '.module.scss')
         );
     }
 

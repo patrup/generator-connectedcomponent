@@ -1,8 +1,8 @@
-export I<%= component %>Props {
+export interface I<%= component %>Props {
     <%= property %>?: any;
     <%= dispatch %>?: Function; 
 }
 
-export I<%= component %>State {
+export interface I<%= component %>State {
     <%= state %>?: any 
 }

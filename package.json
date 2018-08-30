@@ -1,6 +1,6 @@
 {
   "name": "generator-connectedcomponent",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "generates, component, connected component, IComponent file for props and state interface, component.module.scss",
   "repository": {
     "type": "git",
